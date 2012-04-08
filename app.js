@@ -28,15 +28,15 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', function(req, res){
+app.get('/', getCode, function(req, res){
   res.render('index.html');
-  res.send('code' + req.query);
 });
 
-app.get('/?code=CODE', function(req, res){
-  res.send('code' + req.query);
-  console.log(req.query);
-});
+function getCode(req, res) {
+  Code.find(req.query, function(code) {
+    console.log(code);
+  });
+}
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
