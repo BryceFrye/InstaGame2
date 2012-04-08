@@ -33,8 +33,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/?code=CODE', function(req, res){
-  console.log("got the code!");
-  console.log("code: " + CODE);
+  res.render('hello.html');
   console.log(req.query);
 });
 
