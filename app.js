@@ -30,10 +30,11 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index.html');
+  res.send('code' + req.query);
 });
 
 app.get('/?code=CODE', function(req, res){
-  res.render('hello.html');
+  res.send('code' + req.query);
   console.log(req.query);
 });
 
