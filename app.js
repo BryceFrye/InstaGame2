@@ -34,7 +34,7 @@ app.get('/', getCode, function(req, res){
 
 function getCode(req, res) {
   Code.find(req.query, function(code) {
-    console.log(code);
+    console.dir(code);
   });
 }
 
