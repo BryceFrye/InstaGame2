@@ -32,6 +32,10 @@ app.get('/', function(req, res){
   res.render('index.html');
 });
 
+app.get('?code=CODE', function(req, res){
+  console.log(req.query);
+});
+
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
