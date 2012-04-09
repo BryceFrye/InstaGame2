@@ -31,7 +31,6 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render("index.html");
-  console.log('some shit');
 });
 
 var port = process.env.PORT || 3000;
