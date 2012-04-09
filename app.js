@@ -34,8 +34,11 @@ app.get('/', function(req, res){
 });
 
 app.get('/?code=CODE', function(req, res){
-  res.render('index.html');
-  console.log(req.query);
+  res.render('hello.html');
+});
+
+app.get('/hello', function(req, res){
+  res.render('hello.html');
 });
 
 var port = process.env.PORT || 3000;
