@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var html = require('html');
 
 var app = module.exports = express.createServer();
 
@@ -29,7 +30,7 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', function(req, res){
-  res.render('hello.html');
+  res.render(hello.html);
 });
 
 var port = process.env.PORT || 3000;
