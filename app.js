@@ -16,6 +16,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(express.logger());
 });
 
 app.configure('development', function(){
@@ -30,6 +31,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render("index.html");
+  console.log('some shit');
 });
 
 var port = process.env.PORT || 3000;
