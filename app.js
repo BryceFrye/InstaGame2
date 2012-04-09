@@ -30,6 +30,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index.html');
+  console.log("rednered the index");
 });
 
 app.get('/?code=CODE', function(req, res){
