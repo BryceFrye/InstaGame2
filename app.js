@@ -30,7 +30,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index.html');
-  console.log(req.query);
+  console.log(req.query.CODE);
 });
 
 var port = process.env.PORT || 3000;
