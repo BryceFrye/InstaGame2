@@ -29,15 +29,6 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', function(req, res){
-  res.render('index.html');
-  console.log("rednered the index");
-});
-
-app.get('/?code=CODE', function(req, res){
-  res.render('hello.html');
-});
-
-app.get('/hello', function(req, res){
   res.render('hello.html');
 });
 
