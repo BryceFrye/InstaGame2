@@ -28,7 +28,7 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', getCode, function(req, res){
+app.get('/', function(req, res){
   res.render('index.html');
   console.log(req.query);
 });
