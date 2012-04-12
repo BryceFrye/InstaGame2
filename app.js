@@ -33,7 +33,7 @@ var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
 
 app.get('/', function(req, res){
   res.render('index', {
-    title: 'Bryce',
+    title: 'Instagame',
     token: token
   });
 });
