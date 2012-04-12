@@ -1,2 +1,62 @@
-h1= title
-p Welcome to #{title}
+#controls
+#instructions-area
+#user-photos
+#photos
+#guess-correct Correct!
+#guess-wrong Wrong!
+
+script#login-template(type='text/template')
+  html
+    <button id="login-button" class="btn btn-inverse" onClick="parent.location='https://instagram.com/oauth/authorize/?client_id=7ef880e896434566ba789a50d73ae204&redirect_uri=http://severe-stone-4936.herokuapp.com/&scope=relationships&response_type=token'">Log in with Instagram</button>
+    <button id="login-button" class="btn btn-inverse" onClick="parent.location='http://brycefrye.com/instagame-demo'">Try the demo</button>
+   
+script#play-template(type='text/template')
+  #difficulty
+    span#easy(class='btn btn-info') Easy
+    span#hard(class='btn btn-warning') Hard
+    span#expert(class='btn btn-danger') Expert
+
+script#instructions-template(type='text/template')
+  #instructions
+    #header Welcome to Instagame
+    p After logging in and choosing a difficulty level, your Instagram feed will be displayed one photo at a time along with a few profile pictures. Your goal is to guess which of your friends posted each photo. Good luck!
+    p 
+      span.easy Easy 
+      | mode = 
+      span.easy 3 
+      | choices
+    p 
+      span.hard Hard  
+      | mode = 
+      span.hard 5 
+      | choices
+    p 
+      span.expert Expert 
+      | mode = 
+      span.expert ???
+
+script#photo-error-template(type='text/template')
+  #instructions
+    #header Oops!
+    p Sorry, but you need at least ten photos in your Instagram feed to play.
+
+script#follow-error-template(type='text/template')
+  #instructions
+    #header Oops!
+    p Sorry, but you must be following at least five people on Instagram to play.
+    
+script#score-template(type='text/template')
+  #score
+    #header
+      | Score: <%= score %> points<br />
+      | out of <%= (total * 100) - 100 %> possible.
+
+script#photo-template(type='text/template')
+  .photo
+    //img(src='<%= this.model.get('images').standard_resolution.url %>')
+    
+script#user-template(type='text/template')
+  .user-photo
+    //img(src='<%= this.model.get('profile_picture') || this.model.get('user').profile_picture %>')
+    //span.username <%= this.model.get('username') || this.model.get('user').username %>
+  

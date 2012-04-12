@@ -11,7 +11,8 @@ var app = module.exports = express.createServer();
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.use(express['static'](__dirname + '/views'));
+  app.set('view engine', 'jade');
+  //app.use(express['static'](__dirname + '/views'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -27,11 +28,17 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
+
 // Routes
 
 app.get('/', function(req, res){
-  res.render("index.html");
+  res.render('index', {
+    title: 'Bryce',
+    token: token
+  });
 });
+
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
