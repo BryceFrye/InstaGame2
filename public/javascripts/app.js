@@ -7,6 +7,7 @@ $(function(){
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
       this.token = token;
+      console.log(this.token);
     },
     url: function() {
       return 'https://api.instagram.com/v1/users/self?'+this.token+'&callback=?';
