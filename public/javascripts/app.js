@@ -6,7 +6,7 @@ $(function(){
   window.User = Backbone.Model.extend({
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
-      this.token = token;
+      console.log(token);
       console.log(this.token);
     },
     url: function() {
