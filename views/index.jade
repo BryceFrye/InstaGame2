@@ -48,15 +48,19 @@ script#follow-error-template(type='text/template')
 script#score-template(type='text/template')
   #score
     #header
-      | Score: <%= score %> points<br />
-      | out of <%= (total * 100) - 100 %> possible.
+      html
+        Score: <%= score %> points<br />
+        out of <%= (total * 100) - 100 %> possible.
 
 script#photo-template(type='text/template')
   .photo
-    //img(src='<%= this.model.get('images').standard_resolution.url %>')
+    html
+      <img src="<%= this.model.get('images').standard_resolution.url %>"/>
     
 script#user-template(type='text/template')
   .user-photo
-    //img(src='<%= this.model.get('profile_picture') || this.model.get('user').profile_picture %>')
-    //span.username <%= this.model.get('username') || this.model.get('user').username %>
+    html
+      <img src="<%= this.model.get('profile_picture') || this.model.get('user').profile_picture %>"/>
+      <span class="username"><%= this.model.get('username') || this.model.get('user').username %></span>
+    
   
