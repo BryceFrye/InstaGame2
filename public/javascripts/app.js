@@ -5,7 +5,8 @@ $(function(){
   
   window.User = Backbone.Model.extend({
     initialize: function() {
-      this.token = window.location.hash.slice(1,99);  
+      //this.token = window.location.hash.slice(1,99);
+      this.token = #{token};
     },
     url: function() {
       return 'https://api.instagram.com/v1/users/self?'+this.token+'&callback=?';
@@ -19,7 +20,8 @@ $(function(){
     model: Photo,
     
     initialize: function() {
-      this.token = window.location.hash.slice(1,99);
+      //this.token = window.location.hash.slice(1,99);
+      this.token = #{token};
     },
     url: function() {
       return 'https://api.instagram.com/v1/users/self/feed?'+this.token+'&callback=?&count=30';
@@ -33,7 +35,8 @@ $(function(){
     model: Photo,
     
     initialize: function() {
-      this.token = window.location.hash.slice(1,99);
+      //this.token = window.location.hash.slice(1,99);
+      this.token = #{token};
     },
     url: function() {
       return 'https://api.instagram.com/v1/users/self/follows?'+this.token+'&callback=?';
