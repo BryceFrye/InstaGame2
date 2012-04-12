@@ -8,7 +8,7 @@ $(function(){
       //this.token = window.location.hash.slice(1,99);
     },
     url: function() {
-      return 'https://api.instagram.com/v1/users/self?'+"#{token}"+'&callback=?';
+      return 'https://api.instagram.com/v1/users/self?'+#{token}+'&callback=?';
     },
     parse: function(response) {
       return response.data;
