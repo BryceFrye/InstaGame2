@@ -6,11 +6,9 @@ $(function(){
   window.User = Backbone.Model.extend({
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
-      console.log(token);
-      console.log(this.token);
     },
     url: function() {
-      return 'https://api.instagram.com/v1/users/self?'+this.token+'&callback=?';
+      return 'https://api.instagram.com/v1/users/self?'+token+'&callback=?';
     },
     parse: function(response) {
       return response.data;
@@ -22,10 +20,9 @@ $(function(){
     
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
-      this.token = token;
     },
     url: function() {
-      return 'https://api.instagram.com/v1/users/self/feed?'+this.token+'&callback=?&count=30';
+      return 'https://api.instagram.com/v1/users/self/feed?'+token+'&callback=?&count=30';
     },
     parse: function(response) {
       return response.data;
@@ -37,10 +34,9 @@ $(function(){
     
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
-      this.token = token;
     },
     url: function() {
-      return 'https://api.instagram.com/v1/users/self/follows?'+this.token+'&callback=?';
+      return 'https://api.instagram.com/v1/users/self/follows?'+token+'&callback=?';
     },
     parse: function(response) {
       return response.data;
@@ -52,10 +48,9 @@ $(function(){
     
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
-      this.token = token;
     },
     url: function() {
-      return 'https://api.instagram.com/v1/media/popular?'+this.token+'&callback=?';
+      return 'https://api.instagram.com/v1/media/popular?'+token+'&callback=?';
     },
     parse: function(response) {
       return response.data;
