@@ -38,11 +38,12 @@ var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
 
 // Routes
 
-app.get('/', function(req, res){
+app.get('/', function(req, res, err){
   res.render('index', {
     title: 'Instagame',
     token: token
   });
+  if (err) throw err;
   var url_parts = querystring.parse(req.query, true);
   var options = {
     host: "https://api.instagram.com/oauth/access_token",
