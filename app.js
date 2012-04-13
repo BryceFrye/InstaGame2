@@ -72,11 +72,11 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
-        var token = chunk;
-        res.render('index', {
-          title: 'Instagame',
-          token: token
-        });
+        var token = chunk;      
+      });
+      res.render('index', {
+        title: 'Instagame',
+        token: token
       });
     });
     post_req.write(post_data);
