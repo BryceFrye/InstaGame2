@@ -48,6 +48,10 @@ app.get('/', function(req, res){
     redirect_uri: "http://severe-stone-4936.herokuapp.com/",
     code: url_parts.code
   };*/
+  res.render('index', {
+    title: 'Instagame',
+    token: token
+  });
   
   console.log(url_parts.code);
   
@@ -73,12 +77,11 @@ app.get('/', function(req, res){
     });
     post_req.write(post_data);
     post_req.end();
+    
+    res.render('index', {
+      token: token
+    });
   }
-  
-  res.render('index', {
-    title: 'Instagame',
-    token: token
-  });
 });
 
 var port = process.env.PORT || 3000;
