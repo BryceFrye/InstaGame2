@@ -96,8 +96,11 @@ InstagramClient.prototype.fetch = function (path, params, callback) {
 	    }else{
 		    callback(response['meta'], response['meta']['code'], pagination);
 	    }
+	    console.log(response);
 	  });
-  });    
+	  console.log(response);
+  });
+  console.log(response);   
 }
 
 var port = process.env.PORT || 3000;
