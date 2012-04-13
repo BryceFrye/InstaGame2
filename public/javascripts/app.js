@@ -6,6 +6,7 @@ $(function(){
   window.User = Backbone.Model.extend({
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
+      console.log(token);
     },
     url: function() {
       return 'https://api.instagram.com/v1/users/self?'+token+'&callback=?';
