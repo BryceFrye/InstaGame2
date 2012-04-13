@@ -82,12 +82,13 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
-        var token = chunk;      
+        var token = chunk.access_token;      
       });
     });
     post_req.write(post_data);
     post_req.end();
   }
+  console.log("token:"+ token);
   
   if ( token == "none" ) {
     res.render('index', {
