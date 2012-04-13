@@ -81,8 +81,10 @@ var post_req = https.request(post_options, function(res) {
 });
 
 // write parameters to post body
-post_req.write(post_data);
-post_req.end();
+if ( url_parts ) {
+  post_req.write(post_data);
+  post_req.end();
+}
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
