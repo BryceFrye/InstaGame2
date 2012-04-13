@@ -71,13 +71,7 @@ app.get('/', function(req, res){
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
         var token = chunk.access_token;
-        app.get('/', function(req, res){
-          console.log("TOKEN "+ token)
-          res.render('index', {
-            title: 'Instagame',
-            token: token
-          }); 
-        }); 
+        console.log("TOKEN: "+ token);
       });
     });
     post_req.write(post_data);
