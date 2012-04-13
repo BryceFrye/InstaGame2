@@ -78,6 +78,7 @@ app.get('/', function(req, res){
     post_req.write(post_data);
     post_req.end();
   }
+  console.log("tokennnnn: " + token);
   
   if ( token == null ) {
     console.log("SHIT!!!");
