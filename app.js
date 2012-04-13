@@ -73,7 +73,17 @@ app.get('/', function(req, res){
       method: 'POST'
     };
     console.log("checkpoint2");
-    var post_req = http.request(post_options, function(res) {
+    app.addListener('error', function(connectionException){
+        if (connectionException.errno === process.ECONNREFUSED) {
+            sys.log('ECONNREFUSED: connection refused to '
+                +connection.host
+                +':'
+                +connection.port);
+        } else {
+            sys.log(connectionException);
+        }
+    });
+    var post_req = https.request(post_options, function(res) {
       console.log("send");
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
