@@ -68,6 +68,7 @@ app.get('/', function(req, res){
     });
     var post_options = {
       host: "https://api.instagram.com/oauth/access_token",
+      path: "https://api.instagram.com/oauth/access_token",
       method: 'POST',
       headers: {  
         'Content-Type': 'application/x-www-form-urlencoded',  
