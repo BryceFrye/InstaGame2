@@ -63,10 +63,13 @@ app.get('/', function(req, res){
     'redirect_uri': "http://severe-stone-4936.herokuapp.com/",
     'code': url_parts.code || "code"
   });
-  var post_domain = "https://api.instagram.com/oauth/access_token";
   var post_options = {
-    host: post_domain,
+    host: "https://api.instagram.com/oauth/access_token",
     method: 'POST',
+    headers: {  
+      'Content-Type': 'application/x-www-form-urlencoded',  
+      'Content-Length': post_data.length  
+    }
   };
   var post_req = https.request(post_options, function(res) {
     res.setEncoding('utf8');
