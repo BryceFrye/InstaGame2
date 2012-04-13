@@ -81,7 +81,7 @@ app.get('/', function(req, res){
   }
   console.log("tokennnnn: " + token);
   
-  res.render.once('index', {
+  res.once.render('index', {
     title: 'Instagame',
     token: null
   });
