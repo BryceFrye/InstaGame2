@@ -55,6 +55,7 @@ app.get('/', function(req, res, err){
   };
   http.request(options, function(res) {
     console.log(res);
+    console.log(data);
   });
 });
 
