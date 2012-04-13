@@ -50,7 +50,7 @@ app.get('/', function(req, res){
   };*/
   res.render('index', {
     title: 'Instagame',
-    token: "none"
+    token: token || "none"
   });
   
   console.log(url_parts.code);
@@ -73,10 +73,6 @@ app.get('/', function(req, res){
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
         var token = chunk;      
-      });
-      res.render('index', {
-        title: 'Instagame',
-        token: token
       });
     });
     post_req.write(post_data);
