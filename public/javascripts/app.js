@@ -120,8 +120,7 @@ $(function(){
       this.render();
     },   
     render: function() {
-      console.log(token);
-      if (token == null) {
+      if (window.location.querystring == null) {
          $(this.el).append(this.loginTemplate());
       } else {
          $(this.el).append(this.playTemplate());
