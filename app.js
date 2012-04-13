@@ -67,7 +67,7 @@ app.get('/', function(req, res){
       code: url_parts.code
     });
     var post_options = {
-      host: "https://api.instagram.com/oauth/access_token",
+      host: "https://api.instagram.com",
       path: "https://api.instagram.com/oauth/access_token",
       method: 'POST',
       headers: {  
