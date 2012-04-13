@@ -49,7 +49,8 @@ app.get('/', function(req, res){
     code: url_parts.code
   };*/
   res.render('index', {
-    title: 'Instagame'
+    title: 'Instagame',
+    token: "none"
   });
   
   console.log(url_parts.code);
