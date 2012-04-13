@@ -56,52 +56,51 @@ app.get('/', function(req, res, err){
     token: token
   });
   //console.log(options);
+  InstagramClient.prototype.fetch = function (path, params, callback) {
+    if (arguments.length == 3) {
+  	  params.client_id = this.client_id;
+    }else{
+  	  var callback = params;
+  	  params = {client_id: this.client_id};
+    }
+
+    var options = {
+  	  host: 'api.instagram.com',
+  	  path: path+'?'+querystring.stringify(params),
+    }
+
+    https.get(options, function (res) {
+  	  var raw = "";
+  	  res.on('data', function (chunk) {
+  	    raw += chunk;
+  	  });
+  	  res.on('end', function () {
+  	    var response = JSON.parse(raw);
+  	    console.log(response);
+
+  	    var pagination = null;
+  	    if (typeof(response['pagination']) != 'undefined') {
+  		    pagination = response['pagination'];
+  	    }
+
+  	    if (response['meta']['code'] == 200) {
+  		    callback(response['data'], 
+  			           null, 
+  			           pagination);
+  	    }else{
+  		    callback(response['meta'], response['meta']['code'], pagination);
+  	    }
+  	    console.log(response);
+  	  });
+  	  console.log(response);
+    });
+    console.log(response);   
+  }
 });
 
 function InstagramClient(client_id, client_secret) {
   this.client_id = "7ef880e896434566ba789a50d73ae204";
   this.client_secret = "f82712c0f4e848ae935b103947351321";
-}
-
-InstagramClient.prototype.fetch = function (path, params, callback) {
-  if (arguments.length == 3) {
-	  params.client_id = this.client_id;
-  }else{
-	  var callback = params;
-	  params = {client_id: this.client_id};
-  }
-
-  var options = {
-	  host: 'api.instagram.com',
-	  path: path+'?'+querystring.stringify(params),
-  }
-
-  https.get(options, function (res) {
-	  var raw = "";
-	  res.on('data', function (chunk) {
-	    raw += chunk;
-	  });
-	  res.on('end', function () {
-	    var response = JSON.parse(raw);
-	    console.log(response);
-
-	    var pagination = null;
-	    if (typeof(response['pagination']) != 'undefined') {
-		    pagination = response['pagination'];
-	    }
-
-	    if (response['meta']['code'] == 200) {
-		    callback(response['data'], 
-			           null, 
-			           pagination);
-	    }else{
-		    callback(response['meta'], response['meta']['code'], pagination);
-	    }
-	    console.log(response);
-	  });
-	  console.log(response);
-  });
-  console.log(response);   
 }
 
 var port = process.env.PORT || 3000;
