@@ -84,10 +84,12 @@ app.get('/', function(req, res){
   app.once(firstRender());
   
   function firstRender(){
-    res.render('index');
+    res.render('index', {
+      token: token
+    });
   }
   
-  function refresh(){
+  function secondRender(){
     console.log("YAYYYYYY!!!");
     res.render('index', {
       token: token
