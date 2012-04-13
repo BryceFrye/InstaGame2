@@ -8,7 +8,9 @@ html
     
     script(type='text/javascript')
       if ("#{token}" != "none"){
+        console.log("#{token}")
         var token = "#{token}" 
+        console.log(token)
       }
     script(src='/javascripts/jquery.js')
     script(src='/javascripts/underscore.js')
