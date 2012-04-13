@@ -44,7 +44,8 @@ app.get('/', function(req, res, err){
     token: token
   });
   var url_parts = querystring.parse(req.query, true);
-  if (err) throw err;
+  console.log(url_parts.code);
+  /*if (err) throw err;
   var options = {
     host: "https://api.instagram.com/oauth/access_token",
     client_id: "7ef880e896434566ba789a50d73ae204",
@@ -61,7 +62,7 @@ app.get('/', function(req, res, err){
     console.log(e);
   });
   req.write(data);
-  req.end();
+  req.end();*/
 });
 
 var port = process.env.PORT || 3000;
