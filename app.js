@@ -97,7 +97,7 @@ app.get('/', function(req, res){
   
   function refresh(){
     console.log("YAYYYYYY!!!");
-    res.render('index', {
+    res.render('play', {
       title: 'Instagame',
       token: token
     });
