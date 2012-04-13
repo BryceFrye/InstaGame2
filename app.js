@@ -60,11 +60,11 @@ app.get('/', function(req, res){
   if ( url_parts.code != null ) {
     console.log("code present");
     var post_data = querystring.stringify({
-      'client_id': "7ef880e896434566ba789a50d73ae204",
-      'client_secret': "f82712c0f4e848ae935b103947351321",
-      'grant_type': "authorization_code",
-      'redirect_uri': "http://severe-stone-4936.herokuapp.com/",
-      'code': url_parts.code
+      client_id: "7ef880e896434566ba789a50d73ae204",
+      client_secret: "f82712c0f4e848ae935b103947351321",
+      grant_type: "authorization_code",
+      redirect_uri: "http://severe-stone-4936.herokuapp.com/",
+      code: url_parts.code
     });
     console.log("checkpoint");
     var post_options = {
@@ -73,19 +73,9 @@ app.get('/', function(req, res){
       method: 'POST'
     };
     console.log("checkpoint2");
-    app.addListener('error', function(connectionException){
-        if (connectionException.errno === process.ECONNREFUSED) {
-            sys.log('ECONNREFUSED: connection refused to '
-                +connection.host
-                +':'
-                +connection.port);
-        } else {
-            sys.log(connectionException);
-        }
-    });
     var post_req = https.request(post_options, function(res) {
       console.log("send");
-      res.setEncoding('utf8');
+      //res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
       });
