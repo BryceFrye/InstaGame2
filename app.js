@@ -6,6 +6,7 @@
 var express = require('express');
 var url = require('url');
 var querystring = require('qs');
+var http = require('http');
 
 var app = module.exports = express.createServer();
 
@@ -43,7 +44,17 @@ app.get('/', function(req, res){
     token: token
   });
   var url_parts = querystring.parse(req.query, true);
-  console.log(url_parts);
+  var options = {
+    host: "https://api.instagram.com/oauth/access_token",
+    client_id: "7ef880e896434566ba789a50d73ae204",
+    client_secret: "f82712c0f4e848ae935b103947351321",
+    grant_type: "authorization_code",
+    redirect_uri: "http://severe-stone-4936.herokuapp.com/",
+    code: url_parts.code
+  };
+  http.request(options, function(res) {
+    console.log(res);
+  });
 });
 
 var port = process.env.PORT || 3000;
