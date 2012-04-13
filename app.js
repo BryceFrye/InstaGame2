@@ -87,17 +87,11 @@ app.get('/', function(req, res){
       title: 'Instagame',
       token: null
     });
-  } else {
-    console.log("YAYYYYYY!!!");
-    res.render('index', {
-      title: 'Instagame',
-      token: token
-    });
   }
   
   function refresh(){
     console.log("YAYYYYYY!!!");
-    res.render('play', {
+    res.render('index', {
       title: 'Instagame',
       token: token
     });
