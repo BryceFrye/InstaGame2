@@ -72,15 +72,14 @@ app.get('/', function(req, res){
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
         var token = chunk;
+        res.render('index', {
+          title: 'Instagame',
+          token: token
+        });
       });
     });
     post_req.write(post_data);
     post_req.end();
-    
-    res.render('index', {
-      title: 'Instagame',
-      token: token
-    });
   }
 });
 
