@@ -73,7 +73,7 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
-        secondRender();
+        render();
       });
     });
     post_req.write(post_data);
@@ -81,16 +81,9 @@ app.get('/', function(req, res){
   }
   console.log("tokennnnn: " + token);
   
-  app.once(firstRender());
+  app.once(render());
   
-  function firstRender(){
-    res.render('index', {
-      token: token
-    });
-  }
-  
-  function secondRender(){
-    console.log("YAYYYYYY!!!");
+  function render(){
     res.render('index', {
       token: token
     });
