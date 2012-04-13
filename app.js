@@ -45,7 +45,7 @@ app.get('/', function(req, res, err){
   });
   var url_parts = querystring.parse(req.query, true);
   console.log(url_parts.code);
-  /*if (err) throw err;
+
   var options = {
     host: "https://api.instagram.com/oauth/access_token",
     client_id: "7ef880e896434566ba789a50d73ae204",
@@ -54,15 +54,8 @@ app.get('/', function(req, res, err){
     redirect_uri: "http://severe-stone-4936.herokuapp.com/",
     code: url_parts.code
   };
-  var req = http.request(options, function(res){
-    console.log(res);
-    console.log(data);
-  });
-  req.on('error', function(e){
-    console.log(e);
-  });
-  req.write(data);
-  req.end();*/
+  
+  console.log(options);
 });
 
 var port = process.env.PORT || 3000;
