@@ -68,14 +68,14 @@ app.get('/', function(req, res){
     });
     console.log("checkpoint");
     var post_options = {
-      //host: "https://api.instagram.com",
+      host: "api.instagram.com",
       path: "https://api.instagram.com/oauth/access_token",
       method: 'POST'
     };
     console.log("checkpoint2");
     var post_req = https.request(post_options, function(res) {
       console.log("send");
-      //res.setEncoding('utf8');
+      res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
       });
