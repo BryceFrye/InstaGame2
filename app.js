@@ -93,9 +93,9 @@ app.get('/', function(req, res){
     });
   }
   
-  function resendToken(res){
+  function resendToken(){
     console.log("token:"+ token);
-    res.render('index', {
+    render('index', {
       title: 'Instagame',
       token: token
     });
