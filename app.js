@@ -70,6 +70,7 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
+        console.log("THE CHUNK: " + chunk.access_token );
         var token = chunk.access_token;
         this.tokenCount ++;
         console.log("TOKEN: "+ token);
