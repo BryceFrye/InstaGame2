@@ -34,8 +34,6 @@ app.configure('production', function(){
 //console.log(url_parts);
 //console.log(querystring.parse("/?code=sdfisduhfgdiughd"));
 
-var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
-
 // Routes
 
 app.get('/', function(req, res){
@@ -51,10 +49,6 @@ app.get('/', function(req, res){
     code: url_parts.code
   };*/
   
-  res.render('index', {
-    title: 'Instagame',
-    token: token
-  });
   console.log(url_parts.code);
   
   if ( url_parts.code != null ) {
@@ -80,6 +74,11 @@ app.get('/', function(req, res){
     post_req.write(post_data);
     post_req.end();
   }
+  
+  res.render('index', {
+    title: 'Instagame',
+    token: token
+  });
 });
 
 var port = process.env.PORT || 3000;
