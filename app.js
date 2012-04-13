@@ -80,6 +80,7 @@ app.get('/', function(req, res){
   }
   
   if ( token == null ) {
+    console.log("SHIT!!!");
     res.render('index', {
       title: 'Instagame',
       token: null
