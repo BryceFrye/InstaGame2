@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var url = require('url');
+var querystring = require('qs');
 
 var app = module.exports = express.createServer();
 
@@ -28,10 +28,6 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-url.parse(request.url), function(req, res){ 
-  var query = query;
-}
-
 var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
 
 // Routes
@@ -40,8 +36,8 @@ app.get('/', function(req, res){
   res.render('index', {
     title: 'Instagame',
     token: token
-    query: query
   });
+  console.log(querystring.parse('foo=bar&baz=qux&baz=quux&corge'));
 });
 
 var port = process.env.PORT || 3000;
