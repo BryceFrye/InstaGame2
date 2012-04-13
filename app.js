@@ -66,6 +66,7 @@ app.get('/', function(req, res){
       redirect_uri: "http://severe-stone-4936.herokuapp.com/",
       code: url_parts.code
     });
+    console.log("checkpoint");
     var post_options = {
       host: "https://api.instagram.com",
       path: "https://api.instagram.com/oauth/access_token",
