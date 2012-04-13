@@ -49,21 +49,9 @@ app.get('/', function(req, res){
     code: url_parts.code
   };*/
   
-  var token = "none";
-  
-  if ( token == "none" ) {
-    res.render('index', {
-      title: 'Instagame',
-      token: "none"
-    });
-  } else {
-    res.render('index', {
-      title: 'Instagame',
-      token: token
-    });
-  }
-  
   console.log(url_parts.code);
+  
+  var token = null;
   
   if ( url_parts.code != null ) {
     var post_data = querystring.stringify({
@@ -90,10 +78,10 @@ app.get('/', function(req, res){
   }
   console.log("token:"+ token);
   
-  if ( token == "none" ) {
+  if ( token == null ) {
     res.render('index', {
       title: 'Instagame',
-      token: "none"
+      token: null
     });
   } else {
     res.render('index', {
