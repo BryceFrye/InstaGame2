@@ -68,7 +68,7 @@ app.get('/', function(req, res){
     });
     console.log("checkpoint");
     var post_options = {
-      host: "https://api.instagram.com",
+      //host: "https://api.instagram.com",
       path: "https://api.instagram.com/oauth/access_token",
       method: 'POST',
       headers: {  
