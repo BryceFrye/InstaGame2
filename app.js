@@ -70,11 +70,11 @@ app.get('/', function(req, res){
     var post_options = {
       //host: "https://api.instagram.com",
       path: "https://api.instagram.com/oauth/access_token",
-      method: 'POST',
-      headers: {  
-        'Content-Type': 'application/x-www-form-urlencoded',  
-        'Content-Length': post_data.length  
-      }
+      method: 'POST'
+      //headers: {  
+        //'Content-Type': 'application/x-www-form-urlencoded',  
+        //'Content-Length': post_data.length  
+     //}
     };
     var post_req = https.request(post_options, function(res) {
       console.log("send");
