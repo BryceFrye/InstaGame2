@@ -70,7 +70,7 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
-        var token = chunk.access_token;
+        token = chunk.access_token;
         console.log("TOKEN: "+ token);
       });
     });
