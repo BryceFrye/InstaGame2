@@ -56,52 +56,33 @@ app.get('/', function(req, res, err){
     token: token
   });
   //console.log(options);
-  InstagramClient.prototype.fetch = function (path, params, callback) {
-    if (arguments.length == 3) {
-  	  params.client_id = this.client_id;
-    }else{
-  	  var callback = params;
-  	  params = {client_id: this.client_id};
-    }
-
-    var options = {
-  	  host: 'api.instagram.com',
-  	  path: path+'?'+querystring.stringify(params),
-    }
-
-    https.get(options, function (res) {
-  	  var raw = "";
-  	  res.on('data', function (chunk) {
-  	    raw += chunk;
-  	  });
-  	  res.on('end', function () {
-  	    var response = JSON.parse(raw);
-  	    console.log(response);
-
-  	    var pagination = null;
-  	    if (typeof(response['pagination']) != 'undefined') {
-  		    pagination = response['pagination'];
-  	    }
-
-  	    if (response['meta']['code'] == 200) {
-  		    callback(response['data'], 
-  			           null, 
-  			           pagination);
-  	    }else{
-  		    callback(response['meta'], response['meta']['code'], pagination);
-  	    }
-  	    console.log(response);
-  	  });
-  	  console.log(response);
-    });
-    console.log(response);   
-  }
 });
 
-function InstagramClient(client_id, client_secret) {
-  this.client_id = "7ef880e896434566ba789a50d73ae204";
-  this.client_secret = "f82712c0f4e848ae935b103947351321";
-}
+var post_domain = "https://api.instagram.com/oauth/access_token";
+
+var post_data = querystring.stringify({
+  'client_id': "7ef880e896434566ba789a50d73ae204",
+  'client_secret': "f82712c0f4e848ae935b103947351321",
+  'grant_type': "authorization_code",
+  'redirect_uri': "http://severe-stone-4936.herokuapp.com/",
+  'code': url_parts.code
+});
+
+var post_options = {
+  host: post_domain,
+  method: 'POST',
+};
+
+var post_req = https.request(post_options, function(res) {
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    console.log('Response: ' + chunk);
+  });
+});
+
+// write parameters to post body
+post_req.write(post_data);
+post_req.end();
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
