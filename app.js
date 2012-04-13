@@ -90,7 +90,7 @@ app.get('/', function(req, res){
   }
   
   function reRender(){
-    console.log("YAY");
+    console.log("YAY "+token);
     res.end('index', {
       token: token
     });
