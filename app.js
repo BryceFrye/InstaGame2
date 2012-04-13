@@ -74,7 +74,6 @@ app.get('/', function(req, res){
     post_req.write(post_data);
     post_req.end();
   }
-  console.log("token:"+ token);
   
   if ( token == null ) {
     res.render('index', {
@@ -82,6 +81,7 @@ app.get('/', function(req, res){
       token: null
     });
   } else {
+    console.log("token:"+ token);
     res.render('index', {
       title: 'Instagame',
       token: token
