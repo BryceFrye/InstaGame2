@@ -4,6 +4,7 @@
   , "private": true
   , "dependencies": {
       "express": "2.5.x",
-      "jade": "0.22.0"
+      "jade": "0.22.0",
+      "qs": "latest"
   }
 }

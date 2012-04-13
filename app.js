@@ -42,7 +42,7 @@ app.get('/', function(req, res){
     title: 'Instagame',
     token: token
   });
-  var url_parts = url.parse(req.query, true);
+  var url_parts = querystring.parse(req.query, true);
   console.log(url_parts);
 });
 
