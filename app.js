@@ -49,7 +49,9 @@ app.get('/', function(req, res){
     code: url_parts.code
   };*/
   
-  if ( token == null ) {
+  var token = "none";
+  
+  if ( token == "none" ) {
     res.render('index', {
       title: 'Instagame',
       token: "none"
@@ -85,6 +87,18 @@ app.get('/', function(req, res){
     });
     post_req.write(post_data);
     post_req.end();
+  }
+  
+  if ( token == "none" ) {
+    res.render('index', {
+      title: 'Instagame',
+      token: "none"
+    });
+  } else {
+    res.render('index', {
+      title: 'Instagame',
+      token: token
+    });
   }
 });
 
