@@ -73,7 +73,7 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
-        this.reRender();
+        render();
       });
     });
     post_req.write(post_data);
@@ -81,23 +81,12 @@ app.get('/', function(req, res){
   }
   console.log("tokennnnn: " + token);
   
-  app.once(render());
-  
   function render(){
     res.render('index', {
       token: token
     });
   }
 });
-
-function reRender(){
-  app.get('/', function(req, res){
-    console.log("YAY");
-    res.render('index', {
-      token: token
-    });
-  });
-}
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
