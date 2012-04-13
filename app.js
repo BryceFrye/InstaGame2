@@ -90,7 +90,8 @@ app.get('/', function(req, res){
   }
   
   function reRender(){
-    res.end(token: token);
+    console.log("YAY");
+    res.end({token: token});
   }
 });
 
