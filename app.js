@@ -68,13 +68,15 @@ app.get('/', function(req, res){
     };
     var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
-      res.on('data', function (chunk, res) {
+      res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
         token = chunk.access_token;
-        res.render('index', {
-          title: 'Instagame',
-          token: token
-        });    
+        function(res) {
+          res.render('index', {
+            title: 'Instagame',
+            token: token
+          }); 
+        }  
       });
     });
     post_req.write(post_data);
