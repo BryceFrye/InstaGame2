@@ -71,7 +71,6 @@ app.get('/', function(req, res){
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
-        console.log("THE CHUNK: " + parsedJSON.access_token );
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
       });
@@ -86,6 +85,7 @@ app.get('/', function(req, res){
       token: null
     });
   } else {
+    console.log("YAYYYYYY!!!");
     res.render('index', {
       title: 'Instagame',
       token: token
