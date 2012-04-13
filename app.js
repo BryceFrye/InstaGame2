@@ -58,6 +58,7 @@ app.get('/', function(req, res){
   console.log(url_parts);
   
   if ( url_parts.length != null ) {
+    console.log("code present");
     var post_data = querystring.stringify({
       'client_id': "7ef880e896434566ba789a50d73ae204",
       'client_secret': "f82712c0f4e848ae935b103947351321",
@@ -74,6 +75,7 @@ app.get('/', function(req, res){
       }
     };
     var post_req = https.request(post_options, function(res) {
+      console.log("send");
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
