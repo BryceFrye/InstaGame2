@@ -81,10 +81,16 @@ app.get('/', function(req, res){
   }
   console.log("tokennnnn: " + token);
   
-  res.once.render('index', {
-    title: 'Instagame',
-    token: null
+  app.once('connection', function(stream){
+    refresh();
   });
+  
+  function refresh(){
+    res.render('index', {
+      title: 'Instagame',
+      token: null
+    });
+  }
   
   function refresh(){
     console.log("YAYYYYYY!!!");
