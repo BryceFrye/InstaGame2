@@ -55,7 +55,7 @@ app.get('/', function(req, res){
     title: 'Instagame',
     token: token
   });
-  console.log(url_parts);
+  console.log(url_parts.code);
   
   if ( url_parts.length != null ) {
     console.log("code present");
