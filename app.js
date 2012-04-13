@@ -39,8 +39,8 @@ var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
 // Routes
 
 app.get('/', function(req, res, err){
-  /*var url_parts = querystring.parse(req.query, true);
-  console.log(url_parts.code);
+  var url_parts = querystring.parse(req.query, true);
+  /*console.log(url_parts.code);
 
   var options = {
     host: "https://api.instagram.com/oauth/access_token",
