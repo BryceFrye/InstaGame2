@@ -73,7 +73,7 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
-        reRender();
+        reRender(token);
       });
     });
     post_req.write(post_data);
@@ -89,7 +89,7 @@ app.get('/', function(req, res){
     });
   }
   
-  function reRender(){
+  function reRender(token){
     console.log("Token: "+ token);
     res.end('index', {
       token: token
