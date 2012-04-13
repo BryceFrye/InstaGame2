@@ -28,7 +28,7 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-url.parse(query){ 
+url.parse(query), function(req, res){ 
   var query = query;
 }
 
