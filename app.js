@@ -82,10 +82,10 @@ app.get('/', function(req, res){
   console.log("tokennnnn: " + token);
   
   app.once('connection', function(stream){
-    refresh();
+    firstRender();
   });
   
-  function refresh(){
+  function firstRender(){
     res.render('index', {
       title: 'Instagame',
       token: null
