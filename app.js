@@ -4,9 +4,9 @@
  */
 
 var express = require('express');
-var url = require('url');
 var querystring = require('qs');
 var http = require('http');
+var https = require('https');
 
 var app = module.exports = express.createServer();
 
@@ -39,7 +39,7 @@ var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
 // Routes
 
 app.get('/', function(req, res, err){
-  var url_parts = querystring.parse(req.query, true);
+  /*var url_parts = querystring.parse(req.query, true);
   console.log(url_parts.code);
 
   var options = {
@@ -49,14 +49,56 @@ app.get('/', function(req, res, err){
     grant_type: "authorization_code",
     redirect_uri: "http://severe-stone-4936.herokuapp.com/",
     code: url_parts.code
-  };
+  };*/
   
   res.render('index', {
     title: 'Instagame',
     token: token
   });
-  console.log(options);
+  //console.log(options);
 });
+
+function InstagramClient(client_id, client_secret) {
+  this.client_id = "7ef880e896434566ba789a50d73ae204";
+  this.client_secret = "f82712c0f4e848ae935b103947351321";
+}
+
+InstagramClient.prototype.fetch = function (path, params, callback) {
+  if (arguments.length == 3) {
+	  params.client_id = this.client_id;
+  }else{
+	  var callback = params;
+	  params = {client_id: this.client_id};
+  }
+
+  var options = {
+	  host: 'api.instagram.com',
+	  path: path+'?'+querystring.stringify(params),
+  }
+
+  https.get(options, function (res) {
+	  var raw = "";
+	  res.on('data', function (chunk) {
+	    raw += chunk;
+	  });
+	  res.on('end', function () {
+	    var response = JSON.parse(raw);
+
+	    var pagination = null;
+	    if (typeof(response['pagination']) != 'undefined') {
+		    pagination = response['pagination'];
+	    }
+
+	    if (response['meta']['code'] == 200) {
+		    callback(response['data'], 
+			           null, 
+			           pagination);
+	    }else{
+		    callback(response['meta'], response['meta']['code'], pagination);
+	    }
+	  });
+  });    
+}
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
