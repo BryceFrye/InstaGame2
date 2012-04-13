@@ -91,7 +91,9 @@ app.get('/', function(req, res){
   
   function reRender(){
     console.log("YAY");
-    res.end({token: token});
+    res.end('index', {
+      token: token
+    });
   }
 });
 
