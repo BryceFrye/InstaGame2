@@ -81,9 +81,7 @@ app.get('/', function(req, res){
   }
   console.log("tokennnnn: " + token);
   
-  app.once('connection', function(stream){
-    firstRender();
-  });
+  app.once(firstRender());
   
   function firstRender(){
     res.render('index', {
