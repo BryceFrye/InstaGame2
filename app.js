@@ -65,7 +65,7 @@ var post_data = querystring.stringify({
   'client_secret': "f82712c0f4e848ae935b103947351321",
   'grant_type': "authorization_code",
   'redirect_uri': "http://severe-stone-4936.herokuapp.com/",
-  'code': url_parts.code
+  'code': url_parts.code || "code"
 });
 
 var post_options = {
