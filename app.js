@@ -71,11 +71,8 @@ app.get('/', function(req, res){
       //host: "https://api.instagram.com",
       path: "https://api.instagram.com/oauth/access_token",
       method: 'POST'
-      //headers: {  
-        //'Content-Type': 'application/x-www-form-urlencoded',  
-        //'Content-Length': post_data.length  
-     //}
     };
+    console.log("checkpoint2");
     var post_req = https.request(post_options, function(res) {
       console.log("send");
       res.setEncoding('utf8');
