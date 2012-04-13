@@ -51,6 +51,8 @@ app.get('/', function(req, res){
   
   console.log(url_parts.code);
   
+  var token;
+  
   if ( url_parts.code != null ) {
     var post_data = querystring.stringify({
       client_id: "7ef880e896434566ba789a50d73ae204",
