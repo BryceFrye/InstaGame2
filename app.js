@@ -70,7 +70,8 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
-        token = chunk.access_token;      
+        token = chunk.access_token;
+        resendToken();      
       });
     });
     post_req.write(post_data);
@@ -85,6 +86,14 @@ app.get('/', function(req, res){
       token: null
     });
   } else {
+    console.log("token:"+ token);
+    res.render('index', {
+      title: 'Instagame',
+      token: token
+    });
+  }
+  
+  function resendToken(res){
     console.log("token:"+ token);
     res.render('index', {
       title: 'Instagame',
