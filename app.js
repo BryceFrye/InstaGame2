@@ -70,8 +70,9 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
-        token = chunk.access_token;
+        var token = chunk.access_token;
         app.get('/', function(req, res){
+          console.log("TOKEN "+ token)
           res.render('index', {
             title: 'Instagame',
             token: token
@@ -85,16 +86,9 @@ app.get('/', function(req, res){
   console.log(token);
   
   if ( token == null ) {
-    console.log("same old shit");
     res.render('index', {
       title: 'Instagame',
       token: null
-    });
-  } else {
-    console.log("token:"+ token);
-    res.render('index', {
-      title: 'Instagame',
-      token: token
     });
   }
 });
