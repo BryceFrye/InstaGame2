@@ -81,18 +81,15 @@ app.get('/', function(req, res){
   }
   console.log("tokennnnn: " + token);
   
-  if ( token == null ) {
-    console.log("SHIT!!!");
-    res.render('index', {
-      title: 'Instagame',
-      //token: null
-    });
-  }
+  res.render.once('index', {
+    title: 'Instagame',
+    token: null
+  });
   
   function refresh(){
     console.log("YAYYYYYY!!!");
     res.render('index', {
-      //title: 'Instagame',
+      title: 'Instagame',
       token: token
     });
   }
