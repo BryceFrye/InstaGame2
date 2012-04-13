@@ -71,20 +71,22 @@ app.get('/', function(req, res){
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
         var token = chunk.access_token;
+        this.tokenCount ++;
         console.log("TOKEN: "+ token);
       });
     });
     post_req.write(post_data);
     post_req.end();
   }
-  console.log(token);
   
   if ( this.tokenCount == 0 ) {
+    console.log("ZERO");
     res.render('index', {
       title: 'Instagame',
       token: null
     });
   } else {
+    console.log("ONE");
     res.render('index', {
       title: 'Instagame',
       token: token
