@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var url = require('url');
 
 var app = module.exports = express.createServer();
 
@@ -27,6 +28,10 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+url.parse(query){ 
+  var query = query;
+}
+
 var token = "access_token=5987534.6b6ef97.89144b96c6334c50881b945881b84611";
 
 // Routes
@@ -35,6 +40,7 @@ app.get('/', function(req, res){
   res.render('index', {
     title: 'Instagame',
     token: token
+    query: query
   });
 });
 
