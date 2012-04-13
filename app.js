@@ -51,7 +51,7 @@ app.get('/', function(req, res){
   
   console.log(url_parts.code);
   
-  var token;
+  this.tokenCount = 0;
   
   if ( url_parts.code != null ) {
     var post_data = querystring.stringify({
@@ -70,7 +70,7 @@ app.get('/', function(req, res){
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         console.log('Response: ' + chunk);
-        token = chunk.access_token;
+        var token = chunk.access_token;
         console.log("TOKEN: "+ token);
       });
     });
@@ -79,10 +79,15 @@ app.get('/', function(req, res){
   }
   console.log(token);
   
-  if ( token == null ) {
+  if ( this.tokenCount == 0 ) {
     res.render('index', {
       title: 'Instagame',
       token: null
+    });
+  } else {
+    res.render('index', {
+      title: 'Instagame',
+      token: token
     });
   }
 });
