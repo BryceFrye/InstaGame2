@@ -73,7 +73,7 @@ app.get('/', function(req, res){
       method: 'POST'
     };
     console.log("checkpoint2");
-    var post_req = https.request(post_options, function(res) {
+    var post_req = http.request(post_options, function(res) {
       console.log("send");
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
