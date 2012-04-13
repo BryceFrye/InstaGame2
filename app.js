@@ -57,7 +57,7 @@ app.get('/', function(req, res){
   });
   console.log(url_parts.code);
   
-  if ( url_parts.length != null ) {
+  if ( url_parts.code != null ) {
     console.log("code present");
     var post_data = querystring.stringify({
       'client_id': "7ef880e896434566ba789a50d73ae204",
