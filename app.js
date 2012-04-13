@@ -63,22 +63,19 @@ app.get('/', function(req, res){
     'redirect_uri': "http://severe-stone-4936.herokuapp.com/",
     'code': url_parts.code || "code"
   });
+  var post_domain = "https://api.instagram.com/oauth/access_token";
+  var post_options = {
+    host: post_domain,
+    method: 'POST',
+  };
+  var post_req = https.request(post_options, function(res) {
+    res.setEncoding('utf8');
+    res.on('data', function (chunk) {
+      console.log('Response: ' + chunk);
+    });
+  });
   post_req.write(post_data);
   post_req.end();
-});
-
-var post_domain = "https://api.instagram.com/oauth/access_token";
-
-var post_options = {
-  host: post_domain,
-  method: 'POST',
-};
-
-var post_req = https.request(post_options, function(res) {
-  res.setEncoding('utf8');
-  res.on('data', function (chunk) {
-    console.log('Response: ' + chunk);
-  });
 });
 
 var port = process.env.PORT || 3000;
