@@ -64,5 +64,6 @@ script#user-template(type='text/template')
       <span class="username"><%= this.model.get('username') || this.model.get('user').username %></span>
 
 script(type='text/javascript')
-  $("#instructions").click(console.log("#{token}"))
+  console.log("#{token}")
+  console.log("#{name}")
   

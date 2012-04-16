@@ -92,7 +92,8 @@ app.get('/', function(req, res){
   function reRender(token){
     console.log("Token: "+ token);
     res.end('index', {
-      token: token
+      token: token,
+      name: "bryce"
     });
   }
 });
