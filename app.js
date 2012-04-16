@@ -79,20 +79,21 @@ app.get('/', function(req, res){
     post_req.end();
   }
   
-  app.once(render());
-  
-  function render(){
-    console.log('render');
-    res.render('index', {
-      token: token,
-      name: "dave"
-    });
-  }
+  app.once(render(res));
+
 });
+
+function render(res){
+  console.log('render');
+  res.render('index', {
+    token: token,
+    name: "dave"
+  });
+}
 
 function reRender(res, token){
   console.log("Token: "+ token);
-  res.end('index', {
+  res.render('index', {
     token: token,
     name: "bryce"
   });
