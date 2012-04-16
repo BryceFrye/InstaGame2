@@ -72,6 +72,9 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
+        function(){
+          render(res, token);
+        }
       });
     });
     post_req.write(post_data);
@@ -82,11 +85,6 @@ app.get('/', function(req, res){
     render(res, token);
   }
   console.log("shiiit: "+ token);
-  if (token == null){
-    console.log("SHIT");
-  } else {
-    console.log("Woo hoo");
-  }
 
 });
 
