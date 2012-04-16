@@ -82,7 +82,7 @@ app.get('/', function(req, res){
   app.once(render());
   
   function render(){
-    if (token == null) {
+    if (url_parts.code == null) {
       console.log('render');
       res.render('index', {
         token: token,
