@@ -69,7 +69,6 @@ app.get('/', function(req, res){
     var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
-        console.log('Response: ' + chunk);
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
@@ -79,11 +78,11 @@ app.get('/', function(req, res){
     post_req.write(post_data);
     post_req.end();
   }
-  console.log("tokennnnn: " + token);
   
   app.once(render());
   
   function render(){
+    console.log('render');
     res.render('index', {
       token: token,
       name: "dave"
