@@ -72,13 +72,12 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
-        function(){
-          render(res, token);
-        }
       });
     });
     post_req.write(post_data);
-    post_req.end();
+    post_req.end(function(){
+      render(res, token);
+    });
   }
   
   if (url_parts.code == null) {
