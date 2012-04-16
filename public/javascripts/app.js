@@ -121,7 +121,7 @@ $(function(){
     },   
     render: function() {
       console.log(window.location.search);
-      if (window.location.search == null) {
+      if (window.location.search == "") {
          $(this.el).append(this.loginTemplate());
       } else {
          $(this.el).append(this.playTemplate());
