@@ -82,11 +82,13 @@ app.get('/', function(req, res){
   app.once(render());
   
   function render(){
-    console.log('render');
-    res.render('index', {
-      token: token,
-      name: "dave"
-    });
+    if (window.location.search == "") {
+      console.log('render');
+      res.render('index', {
+        token: token,
+        name: "dave"
+      });
+    }
   }
   
   function reRender(token){
