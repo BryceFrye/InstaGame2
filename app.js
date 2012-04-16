@@ -79,7 +79,9 @@ app.get('/', function(req, res){
     post_req.end();
   }
   
-  app.once(render(res, token));
+  if (url_parts.code == null) {
+    render(res, token);
+  }
 
 });
 
