@@ -8,10 +8,7 @@ html
     
     script(type='text/javascript')
       console.log(#{token})
-      if ("#{token}" != "")
-        var token = "#{token}"
-      if ("#{token}" == "")
-        console.log("blank")
+      console.log("#{token}")
     script(src='/javascripts/jquery.js')
     script(src='/javascripts/underscore.js')
     script(src='/javascripts/backbone.js')
