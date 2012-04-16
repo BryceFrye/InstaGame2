@@ -79,9 +79,9 @@ app.get('/', function(req, res){
     post_req.end();
   }
   
-  app.once(render());
+  //app.once(render());
   
-  function render(){
+  //function render(){
     if (url_parts.code == null) {
       console.log('render');
       res.render('index', {
@@ -89,7 +89,7 @@ app.get('/', function(req, res){
         name: "dave"
       });
     }
-  }
+  //}
   
   function reRender(token){
     console.log("Token: "+ token);
