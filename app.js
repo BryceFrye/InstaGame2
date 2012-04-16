@@ -82,6 +82,12 @@ app.get('/', function(req, res){
   if (url_parts.code == null) {
     render(res, token);
   }
+  console.log("shiiit: "+ token);
+  if (token == null){
+    console.log("SHIT");
+  } else {
+    console.log("Woo hoo");
+  }
 
 });
 
