@@ -88,19 +88,15 @@ app.get('/', function(req, res){
       name: "dave"
     });
   }
-  
-  function reRender(token){
-    console.log("Token: "+ token);
-    res.end('index', {
-      token: token,
-      name: "bryce"
-    });
-  }
 });
 
-app.get('/:query', function(req, res){
-  console.log("Just the tip.");
-});
+function reRender(token){
+  console.log("Token: "+ token);
+  res.end('index', {
+    token: token,
+    name: "bryce"
+  });
+}
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
