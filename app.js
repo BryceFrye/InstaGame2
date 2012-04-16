@@ -72,7 +72,6 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
-        render(res, token);
       });
     });
     post_req.write(post_data);
