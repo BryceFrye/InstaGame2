@@ -85,7 +85,8 @@ app.get('/', function(req, res){
   
   function render(){
     res.render('index', {
-      token: token
+      token: token,
+      name: "dave"
     });
   }
   
