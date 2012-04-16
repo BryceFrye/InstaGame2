@@ -120,7 +120,7 @@ $(function(){
       this.render();
     },   
     render: function() {
-      console.log(window.location.search);
+      console.log(token);
       if (window.location.search == "") {
          $(this.el).append(this.loginTemplate());
       } else {
