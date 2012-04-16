@@ -1,16 +1,11 @@
 !!!
 html
   head
-    title= token
+    title= "Instagame"
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/instagame.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Vollkorn')
     
-    script(type='text/javascript')
-      if ("#{token}" != null)
-        console.log("#{token}")
-        var token = "#{token}" 
-        console.log(token)
     script(src='/javascripts/jquery.js')
     script(src='/javascripts/underscore.js')
     script(src='/javascripts/backbone.js')
