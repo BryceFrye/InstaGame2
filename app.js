@@ -84,7 +84,9 @@ app.get('/', function(req, res){
   app.once(render());
   
   function render(){
-    res.render('index');
+    res.render('index', {
+      token: token
+    });
   }
   
   function reRender(token){

@@ -64,6 +64,6 @@ script#user-template(type='text/template')
       <span class="username"><%= this.model.get('username') || this.model.get('user').username %></span>
 
 script(type='text/javascript')
-  if ("#{token}" != null)
+  if ("#{token}" != "undefined")
     console.log("#{token}")
   
