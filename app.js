@@ -79,11 +79,11 @@ app.get('/', function(req, res){
     post_req.end();
   }
   
-  app.once(render(res));
+  app.once(render(res, token));
 
 });
 
-function render(res){
+function render(res, token){
   console.log('render');
   res.render('index', {
     token: token,
