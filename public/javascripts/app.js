@@ -120,6 +120,7 @@ $(function(){
       this.render();
     },   
     render: function() {
+      console.log(window.location);
       if (window.location.querystring == null) {
          $(this.el).append(this.loginTemplate());
       } else {
