@@ -63,4 +63,6 @@ script#user-template(type='text/template')
       <img src="<%= this.model.get('profile_picture') || this.model.get('user').profile_picture %>"/>
       <span class="username"><%= this.model.get('username') || this.model.get('user').username %></span>
 
+script(type='text/javascript')
+  console.log("#{token}")
   
