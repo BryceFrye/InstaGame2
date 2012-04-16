@@ -7,10 +7,8 @@ html
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Vollkorn')
     
     script(type='text/javascript')
-      if ("#{token}" != "")
-        console.log("#{token}")
-        var token = "#{token}" 
-        console.log(token)
+      - if ("#{token}" != "")
+        var token = "#{token}"
     script(src='/javascripts/jquery.js')
     script(src='/javascripts/underscore.js')
     script(src='/javascripts/backbone.js')
