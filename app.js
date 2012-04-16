@@ -82,7 +82,7 @@ app.get('/', function(req, res){
   app.once(render());
   
   function render(){
-    if (window.location.search == "") {
+    if (token == null) {
       console.log('render');
       res.render('index', {
         token: token,
