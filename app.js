@@ -79,17 +79,15 @@ app.get('/', function(req, res){
     post_req.end();
   }
   
-  //app.once(render());
+  app.once(render());
   
-  //function render(){
-    if (url_parts.code == null) {
-      console.log('render');
-      res.render('index', {
-        token: token,
-        name: "dave"
-      });
-    }
-  //}
+  function render(){
+    console.log('render');
+    res.render('index', {
+      token: token,
+      name: "dave"
+    });
+  }
   
   function reRender(token){
     console.log("Token: "+ token);
@@ -98,6 +96,10 @@ app.get('/', function(req, res){
       name: "bryce"
     });
   }
+});
+
+app.get('/:query', function(req, res){
+  console.log("Just the tip.");
 });
 
 var port = process.env.PORT || 3000;
