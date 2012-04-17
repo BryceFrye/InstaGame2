@@ -68,16 +68,15 @@ app.get('/', function(req, res){
     };
     var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
-      res.on('data', function (chunk) {
+      res.on('data', function (chunk, res) {
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
+        render(res, token);
       });
     });
     post_req.write(post_data);
-    post_req.end(function(){
-      render(res, token);
-    });
+    post_req.end();
   }
   
   if (url_parts.code == null) {
