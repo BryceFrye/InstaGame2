@@ -56,7 +56,7 @@ app.get('/', function(req, res){
     res.render('index', {
       token: token
     });
-  
+  }
   
   function sendToken(token){
     res.render('index', {
