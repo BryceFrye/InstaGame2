@@ -68,7 +68,7 @@ app.get('/', function(req, res){
     };
     var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
-      res.on('data', function (chunk, res) {
+      res.on('data', function (chunk) {
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
