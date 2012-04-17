@@ -86,6 +86,9 @@ app.get('/', function(req, res){
   
   function gotToken(token){
     console.log("yeeaaaah: "+ token);
+    res.render('index', {
+      token: token
+    });
   }
 
 });
