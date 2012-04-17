@@ -32,7 +32,7 @@ app.get('/', function(req, res){
       client_id: "7ef880e896434566ba789a50d73ae204",
       client_secret: "f82712c0f4e848ae935b103947351321",
       grant_type: "authorization_code",
-      redirect_uri: "http://severe-stone-4936.herokuapp.com/",
+      redirect_uri: "http://instagame.herokuapp.com/",
       code: url_parts.code
     });
     var post_options = {
