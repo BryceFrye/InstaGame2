@@ -1,16 +1,7 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express');
 var querystring = require('qs');
-var http = require('http');
-var https = require('https');
 
 var app = module.exports = express.createServer();
-
-// Configuration
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -32,7 +23,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   var url_parts = querystring.parse(req.query, true);
-
+  
   var token;
   
   if ( url_parts.code != null ) {
@@ -54,19 +45,20 @@ app.get('/', function(req, res){
         var parsedJSON = eval("(function(){return " + chunk + ";})()");
         var token = parsedJSON.access_token;
         console.log("TOKEN: "+ token);
-        gotToken(token);
+        sendToken(token);
       });
     });
     post_req.write(post_data);
+    post_req.end();
   }
   
   if ( url_parts.code == null ) {
     res.render('index', {
       token: token
     });
-  }
   
-  function gotToken(token){
+  
+  function sendToken(token){
     res.render('index', {
       token: token
     });
