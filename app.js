@@ -75,7 +75,7 @@ app.get('/', function(req, res){
       });
     });
     post_req.write(post_data);
-    post_req.end();
+    post_req.end(console.log("end"));
   }
   
   res.render('index', {
