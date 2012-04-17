@@ -119,6 +119,7 @@ $(function(){
       this.render();
     },   
     render: function() {
+      console.log(token);
       if (token == "") {
          $(this.el).append(this.loginTemplate());
       } else {
