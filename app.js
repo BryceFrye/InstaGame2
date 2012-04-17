@@ -78,19 +78,12 @@ app.get('/', function(req, res){
     post_req.end();
   }
   
-  if (url_parts.code == null) {
-    render(res, token);
-  }
-  console.log("shiiit: "+ token);
-
-});
-
-function render(res, token){
-  console.log("Token: "+ token);
   res.render('index', {
     token: token
   });
-}
+  console.log("shiiit: "+ token);
+
+});
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
