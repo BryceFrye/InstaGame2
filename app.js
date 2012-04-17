@@ -79,10 +79,12 @@ app.get('/', function(req, res){
     post_req.end(console.log("end"));
   }
   
-  res.render('index', {
-    token: token
-  });
-  console.log("shiiit: "+ token);
+  if ( url_parts.code == null ) {
+    console.log("shiiit: "+ token);
+    res.render('index', {
+      token: token
+    });
+  }
   
   function gotToken(token){
     console.log("yeeaaaah: "+ token);
