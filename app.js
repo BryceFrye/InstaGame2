@@ -30,27 +30,9 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-//var url_parts = url.parse(req.query, true);
-//console.log(url_parts);
-//console.log(querystring.parse("/?code=sdfisduhfgdiughd"));
-
-// Routes
-
 app.get('/', function(req, res){
   var url_parts = querystring.parse(req.query, true);
-  /*console.log(url_parts.code);
 
-  var options = {
-    host: "https://api.instagram.com/oauth/access_token",
-    client_id: "7ef880e896434566ba789a50d73ae204",
-    client_secret: "f82712c0f4e848ae935b103947351321",
-    grant_type: "authorization_code",
-    redirect_uri: "http://severe-stone-4936.herokuapp.com/",
-    code: url_parts.code
-  };*/
-  
-  console.log(url_parts.code);
-  
   var token;
   
   if ( url_parts.code != null ) {
@@ -76,18 +58,15 @@ app.get('/', function(req, res){
       });
     });
     post_req.write(post_data);
-    post_req.end(console.log("end"));
   }
   
   if ( url_parts.code == null ) {
-    console.log("shiiit: "+ token);
     res.render('index', {
       token: token
     });
   }
   
   function gotToken(token){
-    console.log("yeeaaaah: "+ token);
     res.render('index', {
       token: token
     });

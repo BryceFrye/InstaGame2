@@ -6,7 +6,6 @@ $(function(){
   window.User = Backbone.Model.extend({
     initialize: function() {
       //this.token = window.location.hash.slice(1,99);
-      console.log(token);
     },
     url: function() {
       return 'https://api.instagram.com/v1/users/self?access_token='+token+'&callback=?';
@@ -121,7 +120,7 @@ $(function(){
     },   
     render: function() {
       console.log(token);
-      if (window.location.search == "") {
+      if (token == "") {
          $(this.el).append(this.loginTemplate());
       } else {
          $(this.el).append(this.playTemplate());
