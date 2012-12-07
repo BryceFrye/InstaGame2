@@ -1,0 +1,192 @@
+body {
+  background-image:url('/images/irongrip.png');
+  font-family: 'Vollkorn';
+}
+
+li {
+  list-style-type: none;
+}
+
+#controls {
+ background-image:url('/images/light_alu.png');
+ width: 615px;
+ height: 50px;
+ margin: auto;
+ text-align: center;
+ padding-top: 14px;
+ border-bottom-left-radius: 6px;
+ border-bottom-right-radius: 6px;
+}
+#controls #login-button {
+  width: 276px;
+  font-size: 18px;
+  font-family: 'Vollkorn';
+}
+
+#instructions-area {
+  background-image:url('/images/light_alu.png');
+  padding: 70px 0 0 0;
+  margin: 35px auto 20px auto;
+  width: 800px;
+  height: 70%;
+  min-height: 620px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 12px;
+}
+
+#header {
+  font-size: 60px;
+  padding-bottom: 40px;
+  line-height: 75px;
+}
+
+#instructions p {
+  font-size: 34px;
+  font-family: 'Vollkorn';
+  line-height: 50px;
+  padding: 0 14px 20px 14px;
+}
+
+#difficulty span {
+  width: 160px;
+  font-size: 18px;
+  margin: 0 1px 0 1px;
+}
+
+#score {
+  text-align: center;
+  font-size: 48px;
+}
+
+#high_scores{
+	font-size: 40px;
+}
+
+#high_scores li{
+	font-size: 20px;
+	list-style: none;
+}
+
+#user-photos {
+  position: absolute;
+  display: inline-block;
+  top: 6px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.user-photo {
+  display: inline-block;
+	width: 150px;
+	height: 150px;
+	margin: 0 2px;
+}
+
+#user-photos img {
+  display: inline-block;
+	cursor: pointer;
+}
+
+#user-photos .username {
+  width: 150px;
+  display: block;
+  background-color: white;
+	border-radius: 0px 0px 3px 3px;
+}
+
+#photos {
+  position: absolute;
+  top: 180px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#photos img {
+  border-radius: 5px;
+}
+
+#guess-correct {
+  display: none;
+  background-color: green;
+  opacity: 0.8;
+  position: relative;
+  top: 180px;
+  margin: auto;
+  width: 615px;
+  height: 400px;
+  text-align: center;
+  color: white;
+  font-size: 90px;
+  padding-top: 215px;
+  border-radius: 5px;
+}
+
+#guess-wrong {
+  display: none;
+  background-color: red;
+  opacity: 0.7;
+  position: relative;
+  top: 180px;
+  margin: auto;
+  width: 615px;
+  height: 400px;
+  text-align: center;
+  color: white;
+  font-size: 90px;
+  padding-top: 215px;
+  border-radius: 5px;
+}
+
+.easy {
+  color: #3fa5c3;
+}
+
+.hard {
+  color: #f9a227;
+}
+
+.expert {
+  color: #d34842;
+}
+
+#logout{
+	display: none;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.incorrect_guess{
+	text-decoration: line-through;
+	opacity: .35;
+}
+
+#chances{
+	display: none;
+	position: fixed;
+	top: 16px;
+	left: 6px;
+	color: red;
+	font-size: 100px;
+}
+
+#chances li{
+	line-height: 85px;
+}
+
+.inactive_strike{
+	color: white;
+	opacity: .1;
+}
+
+#footer{
+	position: relative;
+	bottom: 0px;
+	color: black;
+	font-size: 16px;
+	padding: 6px;
+}
