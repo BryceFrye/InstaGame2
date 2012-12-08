@@ -1,15 +1,15 @@
 {
   "name": "InstaGame",
-  "version": "0.0.3",
+  "version": "0.0.4-1",
   "subdomain": "instagame",
-	"scripts": {
-		"start": "app.js"
-	},
-	"engines": {
-		"node": "0.8.x"
-	},
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
   "dependencies": {
-  	"express": "latest",
+    "express": "latest",
     "jade": "0.22.0",
     "qs": "latest"
   }

@@ -41,21 +41,22 @@ body
 	script#instructions-template(type='text/template')
 		#instructions
 			#header Welcome to InstaGame
-			p After logging in and choosing a difficulty level, your Instagram feed will be displayed one photo at a time along with a few profile pictures. Your goal is to guess which of your friends posted each photo. Good luck!
+			p After logging in and choosing a difficulty level, your Instagram feed will be displayed one photo at a time along with a few profile pictures. Your goal is to guess which of your friends took each photo. Good luck!
 			p 
 				span.easy Easy 
-				| mode = 
+				| : Ten rounds,
 				span.easy 3 
-				| choices
+				| possible photographers.
 			p 
 				span.hard Hard  
-				| mode = 
+				| : Ten rounds,
 				span.hard 5 
-				| choices
+				| possible photographers.
 			p 
 				span.expert Expert 
-				| mode = 
-				span.expert ???
+				| : A stream of popular photos.
+				span.expert 3 
+				| strikes and the game is over.
 			div#footer Made by <a href="http://brycefrye.com">Bryce Frye</a>
 
 	script#photo-error-template(type='text/template')

@@ -1,14 +1,14 @@
-body {
-  background-image:url('/images/irongrip.png');
+body{
+  background-image: url('/images/irongrip.png');
   font-family: 'Vollkorn';
 }
 
-li {
+li{
   list-style-type: none;
 }
 
-#controls {
- background-image:url('/images/light_alu.png');
+#controls{
+ background-image: url('/images/light_alu.png');
  width: 615px;
  height: 50px;
  margin: auto;
@@ -17,14 +17,15 @@ li {
  border-bottom-left-radius: 6px;
  border-bottom-right-radius: 6px;
 }
-#controls #login-button {
+
+#controls #login-button{
   width: 276px;
   font-size: 18px;
   font-family: 'Vollkorn';
 }
 
-#instructions-area {
-  background-image:url('/images/light_alu.png');
+#instructions-area{
+  background-image: url('/images/light_alu.png');
   padding: 70px 0 0 0;
   margin: 35px auto 20px auto;
   width: 800px;
@@ -35,26 +36,26 @@ li {
   border-radius: 12px;
 }
 
-#header {
+#header{
   font-size: 60px;
   padding-bottom: 40px;
   line-height: 75px;
 }
 
-#instructions p {
-  font-size: 34px;
+#instructions p{
+  font-size: 30px;
   font-family: 'Vollkorn';
   line-height: 50px;
-  padding: 0 14px 20px 14px;
+  padding: 0 40px 20px 40px;
 }
 
-#difficulty span {
+#difficulty span{
   width: 160px;
   font-size: 18px;
   margin: 0 1px 0 1px;
 }
 
-#score {
+#score{
   text-align: center;
   font-size: 48px;
 }
@@ -68,7 +69,7 @@ li {
 	list-style: none;
 }
 
-#user-photos {
+#user-photos{
   position: absolute;
   display: inline-block;
   top: 6px;
@@ -77,26 +78,28 @@ li {
   text-align: center;
 }
 
-.user-photo {
+.user-photo{
+	background-image: url('/images/default_user_photo.png');
   display: inline-block;
-	width: 150px;
-	height: 150px;
 	margin: 0 2px;
+	border-radius: 3px;
 }
 
-#user-photos img {
+#user-photos img{
   display: inline-block;
 	cursor: pointer;
+	width: 150px;
+	height: 150px;
 }
 
-#user-photos .username {
+#user-photos .username{
   width: 150px;
   display: block;
   background-color: white;
 	border-radius: 0px 0px 3px 3px;
 }
 
-#photos {
+#photos{
   position: absolute;
   top: 180px;
   left: 0px;
@@ -105,11 +108,11 @@ li {
   padding-bottom: 20px;
 }
 
-#photos img {
+#photos img{
   border-radius: 5px;
 }
 
-#guess-correct {
+#guess-correct{
   display: none;
   background-color: green;
   opacity: 0.8;
@@ -125,7 +128,7 @@ li {
   border-radius: 5px;
 }
 
-#guess-wrong {
+#guess-wrong{
   display: none;
   background-color: red;
   opacity: 0.7;
@@ -141,15 +144,15 @@ li {
   border-radius: 5px;
 }
 
-.easy {
+.easy{
   color: #3fa5c3;
 }
 
-.hard {
+.hard{
   color: #f9a227;
 }
 
-.expert {
+.expert{
   color: #d34842;
 }
 
