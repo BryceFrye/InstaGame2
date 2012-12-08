@@ -3,8 +3,8 @@ module.exports = function(){
 	//~~~ PRODUCTION ~~~//
 	MY_CLIENT_ID = "7ef880e896434566ba789a50d73ae204";
 	MY_CLIENT_SECRET = "f82712c0f4e848ae935b103947351321";
-	MY_REDIRECT_URI = "http://instagame.herokuapp.com/";
-	MY_HOST = "http://instagame.herokuapp.com/";
+	MY_REDIRECT_URI = "http://instagame.jit.su/";
+	MY_HOST = "http://instagame.jit.su/";
 	
 	
 	//~~~ TEST ~~~//

@@ -230,7 +230,7 @@ $(function(){
         var userPhoto = new UserView({ model: photo, difficulty: self.difficulty, photoCollection: self.photoCollection });
         $("#user-photos").append(userPhoto.el);
       });
-			if (this.mode === "normal" && this.currentPhoto > 1){
+			if (this.mode === "normal" && this.currentPhoto > 9){
 				this.resetGame();
 	      $("#instructions-area").append(this.scoreTemplate({ score: this.score, total: this.pointsPossible }));
 			}
@@ -260,6 +260,7 @@ $(function(){
       } else {
         if (this.mode === "expert"){
           this.chances-- ;
+					$(".inactive_strike:first").removeClass("inactive_strike");
 					if (this.chances <= 0){
 						$("#guess-wrong").fadeIn(100);
 		        $("#guess-wrong").fadeOut(400, function(){
@@ -272,7 +273,6 @@ $(function(){
         } else {
           this.score -= 10;
         }
-				$(".inactive_strike:first").removeClass("inactive_strike");
         $("#guess-wrong").fadeIn(100);
         $("#guess-wrong").fadeOut(400);
         photo.addClass("incorrect_guess");
