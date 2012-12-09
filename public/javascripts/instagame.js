@@ -71,11 +71,7 @@ $(function(){
       return this;
     },
     guess: function() {
-      if (this.model.get('user')) {
-				window.App.trigger("guessedUser", this.model.get('user').username, this.$(".user-photo"));
-      } else {
-        window.App.trigger("guessedUser", this.model.get('username'), this.$(".user-photo"));
-      }
+			window.App.trigger("guessedUser", this.model.get('user').username, this.$(".user-photo"));
     }
   });
   
@@ -120,12 +116,15 @@ $(function(){
 			} else if (e.target.id === "expert"){
 				$("#chances").show();
 				this.difficulty = 4;
+				this.chances = 3;
+				this.photoCounter = 0;
 				this.mode = "expert";
 			}
 			this.startGame();
 		},
     startGame: function(){
       var self = this;
+			this.score = 0;
       $("#difficulty").hide();
       $("#score").remove();
       $("#instructions").fadeOut('fast');
@@ -143,15 +142,13 @@ $(function(){
     },
     getPhotos: function(){
       var self = this;
-			this.score = 0;
       if (this.mode === "expert"){
-				this.chances = 3;
         this.photoCollection = new ExpertPhotoFeed();
       } else {
         this.photoCollection = new PhotoFeed();
       }
       this.photoCollection.fetch({success: function(photos, response){
-        photos.models.sort(self.randomize);
+				photos.models.sort(function(){ return 0.5 - Math.random();});
         photos.models.forEach(function(photo){
           if (photo.get('user').username === self.current_user){
             photos.models = _.without(photos.models, photo);
@@ -165,11 +162,7 @@ $(function(){
           $("#controls").slideUp('fast');
           $(".photo").hide();
           $(".photo:first").addClass("active").fadeIn('fast');
-          if (self.mode === "expert"){
-            self.getExpertUsers();
-          } else {
-            self.getUsers();
-          }
+					self.getUsers();
         } else {
           self.notEnoughPhotos();
         }
@@ -188,54 +181,48 @@ $(function(){
     },
     getUsers: function(){
       var self = this;
-			this.uniqueUserObject = {};
+			this.uniqueUsers = {};
       this.userCollection = [];
       this.photoCollection.models.forEach(function(photo){
 				var username = photo.get('user').username;
-        self.uniqueUserObject[username] = photo;
+        self.uniqueUsers[username] = photo;
       });
-			for (key in this.uniqueUserObject){
-				this.userCollection.push(this.uniqueUserObject[key]);
+			for (key in this.uniqueUsers){
+				this.userCollection.push(this.uniqueUsers[key]);
 			}
-      this.findUserPhoto();
-    },
-    getExpertUsers: function(){
-      var self = this;
-      this.userCollection = [];
-      this.photoCollection.models.forEach(function(photo){
-        self.userCollection.push(photo);
-      });
       this.findUserPhoto();
     },
     findUserPhoto: function(){
       var self = this;
-      var userCollectionCopy = _.clone(this.userCollection);
-      userArray = [];
-      userCollectionCopy.forEach(function(user){
-        var username = user.get('username') || user.get('user').username;
-        if (username === self.photoCollection.models[self.currentPhoto].get('user').username) {
-					userArray.push(user);
-          userCollectionCopy = _.without(userCollectionCopy, user);
-        }
-      });
-      while ( userArray.length < this.difficulty ){
-        var randomNumber = Math.floor(Math.random() * userCollectionCopy.length);
-        userArray.push(userCollectionCopy[randomNumber]);
-        userCollectionCopy = _.without(userCollectionCopy, userCollectionCopy[randomNumber]);
-      }
-      userArray.sort(this.randomize);
-      userArray.forEach(function(photo) {
-        var userPhoto = new UserView({ model: photo, difficulty: self.difficulty, photoCollection: self.photoCollection });
-        $("#user-photos").append(userPhoto.el);
-      });
-			if (this.mode === "normal" && this.currentPhoto > 9){
-				this.resetGame();
-	      $("#instructions-area").append(this.scoreTemplate({ score: this.score, total: this.pointsPossible }));
+			if ((this.mode === "expert") && (this.currentPhoto === this.photoCollection.length)){
+				this.currentPhoto = 0;
+				this.getPhotos();
+			} else {
+				var userCollectionCopy = _.clone(this.userCollection);
+	      userArray = [];
+	      userCollectionCopy.forEach(function(photo){
+	        var username = photo.get('user').username;
+	        if (username === self.photoCollection.models[self.currentPhoto].get('user').username) {
+						userArray.push(photo);
+	          userCollectionCopy = _.without(userCollectionCopy, photo);
+	        }
+	      });
+	      while ( userArray.length < this.difficulty ){
+	        var randomNumber = Math.floor(Math.random() * userCollectionCopy.length);
+	        userArray.push(userCollectionCopy[randomNumber]);
+	        userCollectionCopy = _.without(userCollectionCopy, userCollectionCopy[randomNumber]);
+	      }
+				userArray.sort(function(){ return 0.5 - Math.random();});
+	      userArray.forEach(function(photo) {
+	        var userPhoto = new UserView({ model: photo, difficulty: self.difficulty, photoCollection: self.photoCollection });
+	        $("#user-photos").append(userPhoto.el);
+	      });
+				if (this.mode === "normal" && this.currentPhoto > 9){
+					this.resetGame();
+		      $("#instructions-area").append(this.scoreTemplate({ score: this.score, total: this.pointsPossible }));
+				}
 			}
     },
-		randomize: function(){
-			return Math.round(Math.random())-0.5;
-		},
     guessedUser: function(username, photo){
       var self = this;
       var photoUsername = this.photoCollection.models[this.currentPhoto].get('user').username;
@@ -247,6 +234,13 @@ $(function(){
           self.score += 40;
 				} else if (this.mode === "expert"){
 					self.score++;
+					$("#rounds_cleared").html(self.score);
+					if (self.score % 10 === 0){
+						if (this.chances < 3){
+							$(".active_strike:last").removeClass("active_strike").addClass("strike");
+							this.chances++;
+						}
+					}
 				}
         $("#guess-correct").fadeIn(100);
         $("#guess-correct").fadeOut(400, function(){
@@ -257,15 +251,16 @@ $(function(){
         });
       } else {
         if (this.mode === "expert"){
-          this.chances-- ;
-					$(".inactive_strike:first").removeClass("inactive_strike");
+          this.chances--;
+					$(".strike:first").addClass("active_strike").removeClass("strike");
 					if (this.chances <= 0){
 						$("#guess-wrong").fadeIn(100);
 		        $("#guess-wrong").fadeOut(400, function(){
 							self.resetGame();
 				      $("#instructions-area").append(self.expertScoreTemplate({ score: self.score }));
-							$("#chances li").addClass("inactive_strike");
+							$(".active_strike").removeClass("active_strike").addClass("strike");
 							$("#chances").hide();
+							$("#rounds_cleared").html("0");
 						});
 					}
         } else {

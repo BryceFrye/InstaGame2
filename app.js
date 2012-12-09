@@ -1,4 +1,4 @@
-require('./environment')();
+require('./environments/environment.js')();
 var express = require('express');
 var app = express();
 var querystring = require('qs');
@@ -53,7 +53,10 @@ app.get('/', function(req, res){
     post_req.write(post_data);
     post_req.end();
   }
-  
+	console.log(MY_LOGIN_REDIRECT);
+	console.log(MY_REDIRECT_URI);
+  console.log(MY_HOST);
+
   if ( url_parts.code == null ) {
     res.render('index', {
       token: token,

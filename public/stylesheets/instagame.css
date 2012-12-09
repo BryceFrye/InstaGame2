@@ -171,17 +171,34 @@ li{
 	position: fixed;
 	top: 16px;
 	left: 6px;
-	color: red;
+	color: white;
 	font-size: 100px;
+}
+
+#rounds{
+	color: white;
+	opacity: 1;
+	font-size: 20px;
+}
+
+#rounds_cleared{
+	color: white;
+	opacity: 1;
+	line-height: 85px;
+	padding: 0 0 20px 0;
 }
 
 #chances li{
 	line-height: 85px;
 }
 
-.inactive_strike{
-	color: white;
+.strike{
 	opacity: .1;
+}
+
+.active_strike{
+	color: red;
+	opacity: 1;
 }
 
 #footer{

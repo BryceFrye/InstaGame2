@@ -23,9 +23,11 @@ body
 	#guess-correct Correct!
 	#guess-wrong Wrong!
 	#chances
-		li.inactive_strike X
-		li.inactive_strike X
-		li.inactive_strike X
+		div#rounds Round:
+		div#rounds_cleared 0
+		li.strike X
+		li.strike X
+		li.strike X
 
 	script#login-template(type='text/template')
 		html
@@ -100,5 +102,5 @@ body
 	script#user-template(type='text/template')
 		.user-photo
 			html
-				<img src="<%= this.model.get('profile_picture') || this.model.get('user').profile_picture %>"/>
-				<span class="username"><%= this.model.get('username') || this.model.get('user').username %></span>
+				<img src="<%= this.model.get('user').profile_picture %>"/>
+				<span class="username"><%= this.model.get('user').username %></span>
