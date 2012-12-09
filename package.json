@@ -1,6 +1,6 @@
 {
   "name": "InstaGame",
-  "version": "0.0.4-1",
+  "version": "0.0.6-1",
   "subdomain": "instagame",
   "scripts": {
     "start": "app.js"

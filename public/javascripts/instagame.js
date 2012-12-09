@@ -188,18 +188,20 @@ $(function(){
     },
     getUsers: function(){
       var self = this;
-      this.userCollection = new UserPhotos();
-      this.userCollection.fetch({success: function(userPhotos, response) {
-        if ( userPhotos.length > 4 ){
-          self.findUserPhoto();
-        } else {
-          self.notFollowingEnough();
-        }
-      }});
+			this.uniqueUserObject = {};
+      this.userCollection = [];
+      this.photoCollection.models.forEach(function(photo){
+				var username = photo.get('user').username;
+        self.uniqueUserObject[username] = photo;
+      });
+			for (key in this.uniqueUserObject){
+				this.userCollection.push(this.uniqueUserObject[key]);
+			}
+      this.findUserPhoto();
     },
     getExpertUsers: function(){
       var self = this;
-      this.userCollection = new Array();
+      this.userCollection = [];
       this.photoCollection.models.forEach(function(photo){
         self.userCollection.push(photo);
       });
@@ -207,16 +209,12 @@ $(function(){
     },
     findUserPhoto: function(){
       var self = this;
-      if (this.mode === "expert"){
-        var userCollectionCopy = _.clone(this.userCollection);
-      } else {
-        var userCollectionCopy = _.clone(this.userCollection.models);
-      }
-      userArray = new Array();
+      var userCollectionCopy = _.clone(this.userCollection);
+      userArray = [];
       userCollectionCopy.forEach(function(user){
         var username = user.get('username') || user.get('user').username;
         if (username === self.photoCollection.models[self.currentPhoto].get('user').username) {
-          userArray.push(user);
+					userArray.push(user);
           userCollectionCopy = _.without(userCollectionCopy, user);
         }
       });
@@ -241,8 +239,8 @@ $(function(){
     guessedUser: function(username, photo){
       var self = this;
       var photoUsername = this.photoCollection.models[this.currentPhoto].get('user').username;
-      if ( username  === photoUsername ) {
-        this.currentPhoto = this.currentPhoto + 1;
+      if ( username  === photoUsername ){
+        this.currentPhoto++;
         if (this.difficulty === 3){
           self.score += 20;
         } else if (this.difficulty === 5){

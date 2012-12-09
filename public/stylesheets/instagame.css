@@ -26,11 +26,9 @@ li{
 
 #instructions-area{
   background-image: url('/images/light_alu.png');
-  padding: 70px 0 0 0;
+  padding: 70px 0 50px 0;
   margin: 35px auto 20px auto;
   width: 800px;
-  height: 70%;
-  min-height: 620px;
   text-align: center;
   line-height: 50px;
   border-radius: 12px;
