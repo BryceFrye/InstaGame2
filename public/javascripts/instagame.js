@@ -14,8 +14,15 @@ $(function(){
   
   window.PhotoFeed = Backbone.Collection.extend({
     model: Photo,
+		initialize: function(options) {
+			this.mode = options.mode;
+		},
     url: function() {
-      return 'https://api.instagram.com/v1/users/self/feed?access_token='+token+'&callback=?&count=100';
+			if (this.mode === "normal"){
+				return 'https://api.instagram.com/v1/users/self/feed?access_token='+token+'&callback=?&count=100';
+			} else {
+				return 'https://api.instagram.com/v1/media/popular?access_token='+token+'&callback=?&count=100';
+			}
     },
     parse: function(response) {
       return response.data;
@@ -30,16 +37,6 @@ $(function(){
     parse: function(response) {
       return response.data;
     }  
-  });
-  
-  window.ExpertPhotoFeed = Backbone.Collection.extend({
-    model: Photo,
-    url: function() {
-			return 'https://api.instagram.com/v1/media/popular?access_token='+token+'&callback=?&count=100';
-    },
-    parse: function(response) {
-      return response.data;
-    }
   });
   
   window.PhotoView = Backbone.View.extend({
@@ -76,7 +73,7 @@ $(function(){
   });
   
   window.GameView = Backbone.View.extend({
-    el: "#controls",
+    el: "body",
     loginTemplate: _.template($('#login-template').html()),
     playTemplate: _.template($('#play-template').html()),
     instructionsTemplate: _.template($('#instructions-template').html()),
@@ -87,7 +84,8 @@ $(function(){
 		highScoresTemplate: _.template($('#high-scores-template').html()),
     currentPhoto: 0,
     events: {
-			"click .difficulty": "setDifficulty"
+			"click .difficulty": "setDifficulty",
+			"mouseenter .active": "cursorOnPhoto"
     },
     initialize: function() {
       _.bindAll(this, 'render');
@@ -96,9 +94,9 @@ $(function(){
     },   
     render: function() {
       if (token == "") {
-        $(this.el).append(this.loginTemplate());
+        $("#controls").append(this.loginTemplate());
       } else {
-        $(this.el).append(this.playTemplate());
+        $("#controls").append(this.playTemplate());
 				this.getUser();
       }
       $("#instructions-area").append(this.instructionsTemplate());
@@ -117,7 +115,6 @@ $(function(){
 				$("#chances").show();
 				this.difficulty = 4;
 				this.chances = 3;
-				this.photoCounter = 0;
 				this.mode = "expert";
 			}
 			this.startGame();
@@ -142,11 +139,7 @@ $(function(){
     },
     getPhotos: function(){
       var self = this;
-      if (this.mode === "expert"){
-        this.photoCollection = new ExpertPhotoFeed();
-      } else {
-        this.photoCollection = new PhotoFeed();
-      }
+			this.photoCollection = new PhotoFeed({ mode: this.mode });
       this.photoCollection.fetch({success: function(photos, response){
 				photos.models.sort(function(){ return 0.5 - Math.random();});
         photos.models.forEach(function(photo){
@@ -217,7 +210,7 @@ $(function(){
 	        var userPhoto = new UserView({ model: photo, difficulty: self.difficulty, photoCollection: self.photoCollection });
 	        $("#user-photos").append(userPhoto.el);
 	      });
-				if (this.mode === "normal" && this.currentPhoto > 9){
+				if (this.mode === "normal" && this.currentPhoto >= 10){
 					this.resetGame();
 		      $("#instructions-area").append(this.scoreTemplate({ score: this.score, total: this.pointsPossible }));
 				}
@@ -278,6 +271,9 @@ $(function(){
       $("#difficulty").show();
       $("#instructions-area").fadeIn("slow");
 			this.currentPhoto = 0;
+		},
+		cursorOnPhoto: function(e){
+			console.log(e.target);
 		}
 	});
   

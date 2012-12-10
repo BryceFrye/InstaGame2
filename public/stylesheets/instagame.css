@@ -108,6 +108,8 @@ li{
 
 #photos img{
   border-radius: 5px;
+	width: 460px;
+	height: 460px;
 }
 
 #guess-correct{
@@ -117,8 +119,8 @@ li{
   position: relative;
   top: 180px;
   margin: auto;
-  width: 615px;
-  height: 400px;
+	width: 460px;
+	height: 245px;
   text-align: center;
   color: white;
   font-size: 90px;
@@ -133,8 +135,8 @@ li{
   position: relative;
   top: 180px;
   margin: auto;
-  width: 615px;
-  height: 400px;
+	width: 460px;
+	height: 245px;
   text-align: center;
   color: white;
   font-size: 90px;
